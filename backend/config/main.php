@@ -14,9 +14,35 @@ return [
     'modules' => [
         'user' => [
             'as backend' => 'dektrium\user\filters\BackendFilter',
+            'controllerMap' => [
+                'admin' => [
+                    'class' => 'dektrium\user\controllers\AdminController',
+                    'as access' => [
+                        'class' => 'yii\filters\AccessControl',
+                        'rules' => [
+                            [
+                                'allow' => true,
+                                'roles' => ['administrateUser'],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ],
         'rbac' => [
             'class' => 'githubjeka\rbac\Module',
+            'as access' => [
+                'class' => 'yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['administrateRbac'],
+                    ],
+                ],
+            ],
+        ],
+        'admin' => [
+            'class' => 'mdm\admin\Module',
             'as access' => [
                 'class' => 'yii\filters\AccessControl',
                 'rules' => [
