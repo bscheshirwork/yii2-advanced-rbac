@@ -20,10 +20,8 @@ return [
                     'as access' => [
                         'class' => 'yii\filters\AccessControl',
                         'rules' => [
-                            [
-                                ['allow' => true, 'actions' => ['index'], 'roles' => ['@']], //redirect на show. id в данном действии нет
-                                ['allow' => true, 'actions' => ['show'], 'roles' => ['showUserProfile']], // просмотр других запрещён
-                            ],
+                            ['allow' => true, 'actions' => ['index'], 'roles' => ['@']], //redirect на show. id в данном действии нет
+                            ['allow' => true, 'actions' => ['show'], 'roles' => ['showUserProfile']], // просмотр других запрещён
                         ],
                     ],
                 ],
@@ -32,11 +30,9 @@ return [
                     'as access' => [
                         'class' => 'yii\filters\AccessControl',
                         'rules' => [
-                            [
-                                ['allow' => true, 'actions' => ['confirm'], 'roles' => ['@']], //подтвердить почту по ссылке можно только залогинившись
-                                ['allow' => true, 'actions' => ['account'], 'roles' => ['updateSelfAccount']],
-                                ['allow' => true, 'actions' => ['profile'], 'roles' => ['updateSelfProfile']],
-                            ],
+                            ['allow' => true, 'actions' => ['confirm'], 'roles' => ['@']], //подтвердить почту по ссылке можно только залогинившись
+                            ['allow' => true, 'actions' => ['account'], 'roles' => ['updateSelfAccount']],
+                            ['allow' => true, 'actions' => ['profile'], 'roles' => ['updateSelfProfile']],
                         ],
                     ],
                 ],
