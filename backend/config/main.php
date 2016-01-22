@@ -13,7 +13,7 @@ return [
     'bootstrap' => ['log'],
     'modules' => [
         'user' => [
-            'as backend' => 'dektrium\user\filters\BackendFilter',
+            // 'as backend' => 'dektrium\user\filters\BackendFilter',
             'controllerMap' => [
                 'admin' => [
                     'class' => 'dektrium\user\controllers\AdminController',
