@@ -44,9 +44,18 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Login', 'url' => ['/user/security/login']];
     } else {
         $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/user/security/logout'],
-            'linkOptions' => ['data-method' => 'post']
+            'label' => Yii::$app->user->identity->username,
+            'items' => [
+                '<li class="dropdown-header">' . Yii::$app->user->identity->username . '</li>',
+                ['label' => 'Profile', 'url' => ['/user/settings/profile']],
+                ['label' => 'Account', 'url' => ['/user/settings/account']],
+                '<li class="divider"></li>',
+                [
+                    'label' => 'Logout',
+                    'url' => ['/user/security/logout'],
+                    'linkOptions' => ['data-method' => 'post']
+                ],
+            ],
         ];
     }
     echo Nav::widget([
