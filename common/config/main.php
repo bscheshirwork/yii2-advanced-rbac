@@ -12,15 +12,6 @@ return [
     'modules' => [
         'user' => [
             'class' => 'dektrium\user\Module',
-            'as access' => [
-                'class' => 'yii\filters\AccessControl',
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['administrateUser'],
-                    ],
-                ],
-            ],
             'controllerMap' => [
                 'admin' => [
                     'class' => 'dektrium\user\controllers\AdminController',
