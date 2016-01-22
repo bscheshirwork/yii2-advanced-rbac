@@ -1,4 +1,5 @@
 <?php
+use yii\db\ActiveRecord;
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
