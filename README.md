@@ -6,5 +6,5 @@
 ДОКУМЕНТАЦИЯ
 -------------
 
-[Руководство](docs/guide/README.md)
-[Документация исходного шаблона](https://github.com/yiisoft/yii2-app-advanced/blob/master/README.md)
+* [Установка и описание данного примера](docs/guide/README.md)
+* [Документация исходного шаблона](https://github.com/yiisoft/yii2-app-advanced/blob/master/README.md)

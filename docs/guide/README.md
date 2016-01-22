@@ -10,9 +10,20 @@ composer create-project --prefer-dist bscheshirwork/yii2-advanced-rbac yii2-adva
 ```
 и инициализации, аналогичной исходному [шаблону advanced](https://github.com/yiisoft/yii2-app-advanced/blob/master/docs/guide/README.md)
 
+В отличие от исходного шаблона, миграции необходимо выполнить для каждого из модулей
+```
+./yii migrate/up --migrationPath=@yii/rbac/migrations/
+./yii migrate/up --migrationPath=@dektrium/user/migrations
+./yii migrate/up --migrationPath=@mdm/admin/migrations
+./yii migrate/up
+```
+
 Информация о создании данного примера приведена ниже
 
 * [Установка](start-installation.md)
+
+Информация о использовании модулей приведена ниже
+
 * [Модули](start-modules.md)
 
 All Rights Reserved.
