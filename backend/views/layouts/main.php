@@ -40,10 +40,47 @@ AppAsset::register($this);
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/user/security/login']];
     } else {
+        if (Yii::$app->user->can('administrateRbac')) {
+            $menuItems[] = [
+                'label' => 'RBAC',
+                'options' => ['class' => 'header'],
+                'url' => '#',
+                'items' => [
+                    [
+                        'label' => 'Графическое представление',
+                        'url' => ['/rbac'],
+                        'linkOptions' => ['target' => '_blank'],
+                    ],
+                    ['label' => 'Администрирование', 'url' => ['/admin']],
+                    ['label' => 'Пути', 'url' => ['/admin/route']],
+                    ['label' => 'Разрешения', 'url' => ['/admin/permission']],
+                    ['label' => 'Меню', 'url' => ['/admin/menu']],
+                    ['label' => 'Роли', 'url' => ['/admin/role']],
+                    ['label' => 'Привязка', 'url' => ['/admin/assignment']],
+                ],
+            ];
+        }
+
+        if (Yii::$app->user->can('administrateUser')) {
+            $menuItems[] = ['label' => 'Пользователи', 'url' => ['/user/admin/index']];
+        }
+
         $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/user/security/logout'],
-            'linkOptions' => ['data-method' => 'post']
+            'label' => Yii::$app->user->identity->username,
+            'options' => ['class' => 'header'],
+            'url' => '#',
+            'items' => [
+                ['label' => Yii::$app->user->identity->username, 'options' => ['class' => 'header']],
+                ['label' => 'Профиль', 'url' => ['/user/settings/profile']],
+                ['label' => 'Аккаунт', 'url' => ['/user/settings/account']],
+                [
+                    'label' => 'Выход',
+                    'icon' => 'fa fa-share',
+                    'url' => ['/user/security/logout'],
+                    'template' => '<a href="{url}" data-method = "post">{icon} {label}</a>',
+                    'linkOptions' => ['data-method' => 'post'],
+                ],
+            ],
         ];
     }
     echo Nav::widget([
