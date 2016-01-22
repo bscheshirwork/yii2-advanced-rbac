@@ -12,6 +12,16 @@ return [
     'modules' => [
         'user' => [
             'class' => 'dektrium\user\Module',
+            'modelMap' => [
+                'User' => [
+                    'class' => 'dektrium\user\models\User',
+                    'on ' . ActiveRecord::EVENT_AFTER_INSERT => function ($event) {
+                        $auth = Yii::$app->authManager;
+                        $userRole = $auth->getRole('user');
+                        $auth->assign($userRole, $event->sender->getId());
+                    },
+                ],
+            ],
         ],
     ],
 ];
